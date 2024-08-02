@@ -2,8 +2,6 @@
 
 {% block metatitle%} Your articles page {% endblock %}
 
-<<<<<<< HEAD
-
 {% block content %}
     {% for message in app.flashes('success') %}
         <div class="success-message">
@@ -13,11 +11,9 @@
     <main>
         <h1>Get Your favorite article  </h1>
 
-=======
 {% block content %}
     <main>
         <h1>Get Your favorite article  </h1>
->>>>>>> 9dea6b5 (commit_Admin_Guest)
         <table class="admin-article-table">
             <tr>
                 <td>Id</td>
@@ -27,30 +23,27 @@
                 <td>Image</td>
                 <td>Date</td>
                 <td>Est publié ?</td>
-<<<<<<< HEAD
                 <td>Modifier article</td>
                 <td>Supprimer article</td>
                 <td>Lien article</td>
-=======
                 <td>Supprimer article</td>
->>>>>>> 9dea6b5 (commit_Admin_Guest)
             </tr>
         {% for article in articles %}
             <section class="admin-article-table">
                 <tr>
                     <td><h1 class="poke2">{{ article.id }}</h1></td>
                     <td><h1 class="poke2">{{ article.title }}</h1></td>
-<<<<<<< HEAD
+<
                     {# dans twig on accede a la propriété title de l'instance de la classe article requete sql#}
                     <td><h1 class="poke2">{{ article.content}}</h1></td>
                     <td><h1 class="poke2">{{ article.description }}</h1></td>
                     <td><img class="admin_image" src="{{asset('images/'~article.image) }}"></td>
-=======
+
                     {# dans twig on accede a la propriété title requete sql#}
                     <td><h1 class="poke2">{{ article.content}}</h1></td>
                     <td><h1 class="poke2">{{ article.description }}</h1></td>
                     <td><p class=""><img class="admin_image" src="{{ article.image }}"></p></td>
->>>>>>> 9dea6b5 (commit_Admin_Guest)
+
                     <td><h1 class="poke2">{{ article.createdAt |date("Y/m/d") }}</h1></td>
                     <td> {% if article and article.isPublished %}
                             <p>Oui</p>
@@ -58,7 +51,7 @@
                             <p>Non</p>
                         {% endif %}
                     </td>
-<<<<<<< HEAD
+
                     <td><a href="{{ path('admin_article_update_formbuilder', {id:article.id}) }}">Update Your Article</a></td>
                     <td><a href="{{ path('delete_article', {id:article.id}) }}">Suppress Your Article</a></td>
                     <td><a href="{{ path('article_db_by_id', {id:article.id}) }}">Go get Your Article</a></td>
@@ -75,20 +68,13 @@
                     </td>
                 </tr>
 
-=======
-                   <td><a href="{{ path('delete_article', {id:article.id}) }}">Suppress Your Article</a></td>
+         <td><a href="{{ path('delete_article', {id:article.id}) }}">Suppress Your Article</a></td>
                     <td><a href="{{ path('article_db_by_id', {id:article.id}) }}">Go get Your Article</a></td>
                 </tr>
->>>>>>> 9dea6b5 (commit_Admin_Guest)
             </section>
         {% endfor %}
         </table>
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dea6b5 (commit_Admin_Guest)
 {#            <a href="{{ path('article_update', {id:article.id}) }}">Update Your Article</a>#}
     </main>
 
