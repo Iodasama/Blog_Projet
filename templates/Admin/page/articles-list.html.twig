@@ -1,0 +1,47 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block metatitle%} Your articles page {% endblock %}
+
+{% block content %}
+    <main>
+        <h1>Get Your favorite article  </h1>
+        <table class="admin-article-table">
+            <tr>
+                <td>Id</td>
+                <td>Titre</td>
+                <td>Content</td>
+                <td>Description</td>
+                <td>Image</td>
+                <td>Date</td>
+                <td>Est publié ?</td>
+                <td>Supprimer article</td>
+            </tr>
+        {% for article in articles %}
+            <section class="admin-article-table">
+                <tr>
+                    <td><h1 class="poke2">{{ article.id }}</h1></td>
+                    <td><h1 class="poke2">{{ article.title }}</h1></td>
+                    {# dans twig on accede a la propriété title requete sql#}
+                    <td><h1 class="poke2">{{ article.content}}</h1></td>
+                    <td><h1 class="poke2">{{ article.description }}</h1></td>
+                    <td><p class=""><img class="admin_image" src="{{ article.image }}"></p></td>
+                    <td><h1 class="poke2">{{ article.createdAt |date("Y/m/d") }}</h1></td>
+                    <td> {% if article and article.isPublished %}
+                            <p>Oui</p>
+                        {% else %}
+                            <p>Non</p>
+                        {% endif %}
+                    </td>
+                   <td><a href="{{ path('delete_article', {id:article.id}) }}">Suppress Your Article</a></td>
+                    <td><a href="{{ path('article_db_by_id', {id:article.id}) }}">Go get Your Article</a></td>
+                </tr>
+            </section>
+        {% endfor %}
+        </table>
+
+
+{#            <a href="{{ path('article_update', {id:article.id}) }}">Update Your Article</a>#}
+    </main>
+
+
+{% endblock %}

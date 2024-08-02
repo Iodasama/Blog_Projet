@@ -1,0 +1,21 @@
+{% extends "Guest/base.html.twig" %}
+
+{% block metatitle%} Your articles page{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>Get Your favorite article  </h1>
+        {% for article in articles %}
+            <h1 class="poke">Your favorite Article is here</h1>
+            <h1 class="poke2">{{ article.title }}</h1>
+            <h1 class="poke2">{{ article.content}}</h1>
+            <h1 class="poke2">{{ article.description }}</h1>
+            <a href="{{ path('article_db_by_id', {id:article.id}) }}">Go get Your Article</a>
+            <p class="poke2"><img src="{{ article.image }}"></p>
+
+            <h1 class="poke2">{{ article.createdAt |date("Y/m/d") }}</h1>
+
+{#            <a href="{{ path('article_update', {id:article.id}) }}">Update Your Article</a>#}
+        {% endfor %}
+    </main>
+{% endblock %}
