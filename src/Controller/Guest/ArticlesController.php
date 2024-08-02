@@ -4,6 +4,7 @@ declare(strict_types=1); // pour etre sur de l'affichage permet de reperer les e
 namespace App\Controller\Guest;
 
 
+<<<<<<< HEAD
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
@@ -11,6 +12,11 @@ use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+=======
+use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -18,6 +24,10 @@ class ArticlesController extends AbstractController
 {
 
     #[Route('/articles-list-db', name: 'articles_list_db')]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     public function listArticlesFromDb(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAll();
@@ -30,15 +40,24 @@ class ArticlesController extends AbstractController
     {
         $article = $articleRepository->find($id);
 
+<<<<<<< HEAD
         if (!$article || !$article->getIsPublished()) {
+=======
+        if (!$article || !$article->isPublished()) {
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
             $html404 = $this->renderView('guest/page/404.html.twig');
             return new Response($html404, 404);
         }
 
         return $this->render('Guest/page/show-articleById.html.twig', ['article' => $article]);
     }
+<<<<<<< HEAD
 
     #[Route('/categories-list-db', name: 'categories_list_db')]
+=======
+    #[Route('/categories-list-db', name: 'categories_list_db')]
+
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     public function listCategoriesFromDb(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();
@@ -54,5 +73,10 @@ class ArticlesController extends AbstractController
         return $this->render('Guest/page/show-categoriesById.html.twig', ['category' => $category]);
     }
 
+<<<<<<< HEAD
 }
 
+=======
+
+}
+>>>>>>> 9dea6b5 (commit_Admin_Guest)

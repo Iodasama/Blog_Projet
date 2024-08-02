@@ -4,6 +4,7 @@ declare(strict_types=1); // pour etre sur de l'affichage permet de reperer les e
 namespace App\Controller\Admin;
 
 
+<<<<<<< HEAD
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
@@ -15,15 +16,31 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+=======
+use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
 
 class AdminArticlesController extends AbstractController
 {
 
+<<<<<<< HEAD
     #[Route('/admin/articles-list-db', name: 'admin_articles_list_db')]
     //Je cree la route, je lui passe le nom de admin_articles_list_db
     public function adminListArticlesFromDb(ArticleRepository $articleRepository): Response //Response pour le typage
     {
         $articles = $articleRepository->findAll(); //dans ma table Article je fais ma demande Select/ArticleRepo methode findAll, Doctrine bosse avec l'Entité->pour la requete SQl $articles = $articleRepository->findAll() Doctrine crée une instance de l'Entité (Article ici) par enregistrement (12 articles 12 enregistrements), je lui mets les valeurs que je veux (propriétés title, color?)je lui passe et Doctrine fait le reste du travail.
+=======
+    #[Route('/Admin/articles-list-db', name: 'admin_articles_list_db')]
+    //Je cree la route, je lui passe le nom de admin_articles_list_db
+    public function adminListArticlesFromDb(ArticleRepository $articleRepository): Response //Response pour le typage
+    {
+        $articles = $articleRepository->findAll(); //dans ma table Article je fais ma demande Select/ArticleRepo methode findAll, Doctrine bosse avec l'Entité->pour la requete SQl $articles = $articleRepository->findAll() je crée une instance de l'Entité (Article ici) cad un enregistrement, je lui mets les valeurs que je veux (propriétés title, color?)je lui passe et Doctrine fait le reste du travail.
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
         // La classe repository est un design pattern
         //Les requetes Select sont mises dans Repository
         //Je type la classe ArticleRepository et je crée une instance $articleRepository des lors je peux utliser ses methodes
@@ -33,11 +50,16 @@ class AdminArticlesController extends AbstractController
         //la variable articles contient la variable $articles
     }
 
+<<<<<<< HEAD
     #[Route('/admin/delete/{id}', name: 'delete_article')]
+=======
+    #[Route('/Admin/delete/{id}', name: 'delete_article')]
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     public function deleteArticle(int $id, articleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
         $article = $articleRepository->find($id);
 
+<<<<<<< HEAD
         if (!$article) {
             $html404 = $this->renderView('Admin/page/404.html.twig');
             return new Response($html404, 404);
@@ -130,6 +152,16 @@ class AdminArticlesController extends AbstractController
 
     }
 }
+=======
+        $entityManager->remove($article); //preparation : preparer la requete Sql de suppression
+        $entityManager->flush(); // execute : executer la requete préparée
+
+
+        return $this->redirectToRoute('Admin/page/articles_list_db'); // je redirige vers ma page list pokemon Bdd et je check si le pokemon a été supprimé
+
+    }
+
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
 //    #[Route('/admin/show-articles/{id}', name: 'admin_article_db_by_id')]
 //    public function adminShowArticleById(int $id, ArticleRepository $articleRepository): Response
 //    {
@@ -160,4 +192,8 @@ class AdminArticlesController extends AbstractController
 //    }
 
 
+<<<<<<< HEAD
 
+=======
+}
+>>>>>>> 9dea6b5 (commit_Admin_Guest)

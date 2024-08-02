@@ -35,6 +35,7 @@ class Category
     #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'category')]
     private Collection $articles;
 
+<<<<<<< HEAD
     #[ORM\Column(length: 255)]
     private ?string $Image = null;
 
@@ -43,6 +44,11 @@ class Category
         $this->categories = new ArrayCollection();
         $this->createdAt=new \DateTime(datetime:'NOW');
         $this->updatedAt=new \DateTime(datetime:'NOW');
+=======
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     }
 
     public function getId(): ?int
@@ -67,7 +73,11 @@ class Category
         return $this->color;
     }
 
+<<<<<<< HEAD
     public function setColor(string $color): static
+=======
+    public function setColor(string $content): static
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     {
         $this->color = $color;
 
@@ -127,6 +137,7 @@ class Category
 
         return $this;
     }
+<<<<<<< HEAD
 
     public function getImage(): ?string
     {
@@ -139,4 +150,6 @@ class Category
 
         return $this;
     }
+=======
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
 }

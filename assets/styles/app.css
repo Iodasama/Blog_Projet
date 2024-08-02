@@ -1,0 +1,30 @@
+body {
+    background-color: #96d9f4;
+}
+
+.list-articles {
+    margin: 30px;
+    display: flex;
+}
+
+
+.img_header {
+    /*position:relative;*/
+    width: 100%;
+}
+.admin-article-table {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.admin_image{
+
+    width:50px;
+}
+
+td{ border:solid black}
+tr {
+    border:solid black;
+}

@@ -6,6 +6,7 @@
     <main>
         <h1>Get Your favorite article  </h1>
         {% for article in articles %}
+<<<<<<< HEAD
 {#            {% if article.isPublished %}#}
                 <h1 class="poke">Your favorite Article is here</h1>
                 <article class="article" style="border: 3px solid {{ article.category ? article.category.color : "black" }}">
@@ -19,6 +20,18 @@
                 </article>
 {#            <a href="{{ path('article_update', {id:article.id}) }}">Update Your Article</a>#}
 {#            {% endif %}#}
+=======
+            <h1 class="poke">Your favorite Article is here</h1>
+            <h1 class="poke2">{{ article.title }}</h1>
+            <h1 class="poke2">{{ article.content}}</h1>
+            <h1 class="poke2">{{ article.description }}</h1>
+            <a href="{{ path('article_db_by_id', {id:article.id}) }}">Go get Your Article</a>
+            <p class="poke2"><img src="{{ article.image }}"></p>
+
+            <h1 class="poke2">{{ article.createdAt |date("Y/m/d") }}</h1>
+
+{#            <a href="{{ path('article_update', {id:article.id}) }}">Update Your Article</a>#}
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
         {% endfor %}
     </main>
 {% endblock %}

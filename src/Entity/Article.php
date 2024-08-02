@@ -27,7 +27,10 @@ class Article
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+<<<<<<< HEAD
     #[ORM\JoinColumn(nullable: true, onDelete: "SET NULL")]
+=======
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     private ?Category $category = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -39,6 +42,7 @@ class Article
     #[ORM\Column]
     private ?bool $isPublished = null;
 
+<<<<<<< HEAD
     // Permet de supprimer en "cascade"
     // les articles liés à une catégorie
     // quand la catégorie est supprimée
@@ -53,6 +57,8 @@ class Article
         $this->updatedAt=new \DateTime(datetime:'NOW');
     }
 
+=======
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     public function getId(): ?int
     {
         return $this->id;
@@ -142,12 +148,20 @@ class Article
         return $this;
     }
 
+<<<<<<< HEAD
     public function getIsPublished(): ?bool // bien verifier si la syntaxe du getter
+=======
+    public function isPublished(): ?bool
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     {
         return $this->isPublished;
     }
 
+<<<<<<< HEAD
     public function setIsPublished(bool $isPublished): static //bien verifier si la syntaxe du setter
+=======
+    public function setPublished(bool $isPublished): static
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     {
         $this->isPublished = $isPublished;
 
