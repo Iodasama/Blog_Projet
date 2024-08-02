@@ -18,7 +18,7 @@ class AdminArticlesController extends AbstractController
     //Je cree la route, je lui passe le nom de admin_articles_list_db
     public function adminListArticlesFromDb(ArticleRepository $articleRepository): Response //Response pour le typage
     {
-        $articles = $articleRepository->findAll(); //dans ma table Article je fais ma demande Select/ArticleRepo methode findAll, Doctrine bosse avec l'Entité->pour la requete SQl $articles = $articleRepository->findAll() je crée une instance de l'Entité (Article ici) cad un enregistrement, je lui mets les valeurs que je veux (propriétés title, color?)je lui passe et Doctrine fait le reste du travail.
+        $articles = $articleRepository->findAll(); //dans ma table Article je fais ma demande Select/ArticleRepo methode findAll, Doctrine bosse avec l'Entité->pour la requete SQl $articles = $articleRepository->findAll() Doctrine crée une instance de l'Entité (Article ici) par enregistrement (12 articles 12 enregistrements), je lui mets les valeurs que je veux (propriétés title, color?)je lui passe et Doctrine fait le reste du travail.
         // La classe repository est un design pattern
         //Les requetes Select sont mises dans Repository
         //Je type la classe ArticleRepository et je crée une instance $articleRepository des lors je peux utliser ses methodes
@@ -33,13 +33,22 @@ class AdminArticlesController extends AbstractController
     {
         $article = $articleRepository->find($id);
 
-        $entityManager->remove($article); //preparation : preparer la requete Sql de suppression
-        $entityManager->flush(); // execute : executer la requete préparée
+        if (!$article) {
+            $html404 = $this->renderView('Admin/page/404.html.twig');
+            return new Response($html404, 404);
+        }
 
+        try {
+            $entityManager->remove($article); //preparation : preparer la requete Sql de suppression
+            $entityManager->flush(); // execute : executer la requete préparée
+            $this->addFlash('success', 'Article deleted successfully');
+        } catch (\Exception $exception) {
+            return $this->renderView('Admin/page/errormessage.html.twig', ['errorMessage' => $exception->getMessage()]);
+        }
+            return $this->redirectToRoute('admin_articles_list_db'); //bien mettre le name du path ici admin_articles_list_db non pas
+        }
 
-        return $this->redirectToRoute('Admin/page/articles_list_db'); // je redirige vers ma page list pokemon Bdd et je check si le pokemon a été supprimé
-
-    }
+}
 
 //    #[Route('/admin/show-articles/{id}', name: 'admin_article_db_by_id')]
 //    public function adminShowArticleById(int $id, ArticleRepository $articleRepository): Response
@@ -71,4 +80,4 @@ class AdminArticlesController extends AbstractController
 //    }
 
 
-}
+

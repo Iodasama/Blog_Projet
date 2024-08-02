@@ -2,9 +2,16 @@
 
 {% block metatitle%} Your articles page {% endblock %}
 
+
 {% block content %}
+    {% for message in app.flashes('success') %}
+        <div class="success-message">
+            {{ message }}
+        </div>
+    {% endfor %}
     <main>
         <h1>Get Your favorite article  </h1>
+
         <table class="admin-article-table">
             <tr>
                 <td>Id</td>
@@ -21,7 +28,7 @@
                 <tr>
                     <td><h1 class="poke2">{{ article.id }}</h1></td>
                     <td><h1 class="poke2">{{ article.title }}</h1></td>
-                    {# dans twig on accede a la propriété title requete sql#}
+                    {# dans twig on accede a la propriété title de l'instance de la classe article requete sql#}
                     <td><h1 class="poke2">{{ article.content}}</h1></td>
                     <td><h1 class="poke2">{{ article.description }}</h1></td>
                     <td><p class=""><img class="admin_image" src="{{ article.image }}"></p></td>
@@ -38,6 +45,7 @@
             </section>
         {% endfor %}
         </table>
+
 
 
 {#            <a href="{{ path('article_update', {id:article.id}) }}">Update Your Article</a>#}
