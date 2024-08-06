@@ -17,17 +17,21 @@ class AdminUserController extends AbstractController
     public function insertAdminUser(UserPasswordHasherInterface $passwordHasher, Request $request, EntityManagerInterface $entityManager)
     {
 
-        if ($request->getMethod() === "POST") {   // avec la methode Post la demande de création du user a été envoyée les données sont enregistrées.  // je type ma variable $request elle n acceptera que la classe request
+        if ($request->getMethod() === "POST") {   // avec la methode Post la demande de création du user a été envoyée les données sont enregistrées.  // je type ma variable $request elle n'acceptera qu'une instance de la classe Request
             $email = $request->request->get('email');
             $password = $request->request->get('password');
 
+        if(!$password) {
+            $this->addFlash('error', 'You need to enter a password');
+            return $this->redirectToRoute('admin_insert_user');
+        }
             $user = new User(); // on instancie une nouvelle classe User
 
             try {
                 $hashedPassword = $passwordHasher->hashPassword(
                     $user,
                     $password
-                ); // j'instancie la classe $passwordHasher pour le hashage du password ( On peut le modifier dans security.yaml, par defaut auto (13))
+                ); // j'instancie la classe $passwordHasher pour le hashage du password ( On peut le modifier dans security.yaml, par defaut auto (algo argon2i) tres performant)
 
                 // je recupere les donnees POST, je place les valeurs que je veux (email, password, role) dans mon user
                 $user->setEmail($email);
