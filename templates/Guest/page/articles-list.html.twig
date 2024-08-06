@@ -7,6 +7,9 @@
         <h1>Get Your favorite article  </h1>
         {% for article in articles %}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8588bb4 (user_insert_form)
 {#            {% if article.isPublished %}#}
                 <h1 class="poke">Your favorite Article is here</h1>
                 <article class="article" style="border: 3px solid {{ article.category ? article.category.color : "black" }}">
@@ -15,6 +18,7 @@
                     <h3 class="poke2">{{ article.description }}</h3>
                     <a href="{{ path('article_db_by_id', {id:article.id}) }}">Go get Your Article</a>
                     <p class="poke2"><img src="{{ article.image }}"></p>
+<<<<<<< HEAD
 
                     <h1 class="poke2">{{ article.createdAt |date("Y/m/d") }}</h1>
                 </article>
@@ -29,9 +33,17 @@
             <p class="poke2"><img src="{{ article.image }}"></p>
 
             <h1 class="poke2">{{ article.createdAt |date("Y/m/d") }}</h1>
+=======
+>>>>>>> 8588bb4 (user_insert_form)
 
+                    <h1 class="poke2">{{ article.createdAt |date("Y/m/d") }}</h1>
+                </article>
 {#            <a href="{{ path('article_update', {id:article.id}) }}">Update Your Article</a>#}
+<<<<<<< HEAD
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+{#            {% endif %}#}
+>>>>>>> 8588bb4 (user_insert_form)
         {% endfor %}
     </main>
 {% endblock %}

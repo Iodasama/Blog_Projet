@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #    Le fichier de configuration security. yml décrit les règles d'authentification et d'autorisation pour une application symfony. Les informations de configuration du fichier security. yml sont utilisés par la classe du factory user ( sfBasicSecurityUser par défaut).
 =======
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+#    Le fichier de configuration security. yml décrit les règles d'authentification et d'autorisation pour une application symfony. Les informations de configuration du fichier security. yml sont utilisés par la classe du factory user ( sfBasicSecurityUser par défaut).
+>>>>>>> 8588bb4 (user_insert_form)
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
@@ -9,6 +13,9 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8588bb4 (user_insert_form)
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
@@ -16,9 +23,12 @@ security:
                 property: email
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
+<<<<<<< HEAD
 =======
         users_in_memory: { memory: null }
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+>>>>>>> 8588bb4 (user_insert_form)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -26,19 +36,28 @@ security:
         main:
             lazy: true
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8588bb4 (user_insert_form)
             provider: app_user_provider
             form_login:
                 login_path: app_login
                 check_path: app_login
                 enable_csrf: true
+<<<<<<< HEAD
                 default_target_path: app_login
+=======
+>>>>>>> 8588bb4 (user_insert_form)
             logout:
                 path: app_logout
                 # where to redirect after logout
                 target: articles_list_db
+<<<<<<< HEAD
 =======
             provider: users_in_memory
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+>>>>>>> 8588bb4 (user_insert_form)
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -50,11 +69,15 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
 <<<<<<< HEAD
+<<<<<<< HEAD
          - { path: ^/admin, roles: ROLE_ADMIN }
 #        Attention a la casse eviter majuscule admin non pas Admin
 =======
         # - { path: ^/Admin, roles: ROLE_ADMIN }
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+         - { path: ^/Admin, roles: ROLE_ADMIN }
+>>>>>>> 8588bb4 (user_insert_form)
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

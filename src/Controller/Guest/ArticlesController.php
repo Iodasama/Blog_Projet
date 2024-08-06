@@ -5,6 +5,7 @@ namespace App\Controller\Guest;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
@@ -13,10 +14,19 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 =======
+=======
+use App\Entity\Article;
+use App\Form\ArticleType;
+>>>>>>> 8588bb4 (user_insert_form)
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+<<<<<<< HEAD
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+use Symfony\Component\HttpFoundation\Request;
+>>>>>>> 8588bb4 (user_insert_form)
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -25,9 +35,12 @@ class ArticlesController extends AbstractController
 
     #[Route('/articles-list-db', name: 'articles_list_db')]
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+>>>>>>> 8588bb4 (user_insert_form)
     public function listArticlesFromDb(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAll();
@@ -41,10 +54,14 @@ class ArticlesController extends AbstractController
         $article = $articleRepository->find($id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (!$article || !$article->getIsPublished()) {
 =======
         if (!$article || !$article->isPublished()) {
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+        if (!$article || !$article->getIsPublished()) {
+>>>>>>> 8588bb4 (user_insert_form)
             $html404 = $this->renderView('guest/page/404.html.twig');
             return new Response($html404, 404);
         }
@@ -52,12 +69,17 @@ class ArticlesController extends AbstractController
         return $this->render('Guest/page/show-articleById.html.twig', ['article' => $article]);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     #[Route('/categories-list-db', name: 'categories_list_db')]
 =======
     #[Route('/categories-list-db', name: 'categories_list_db')]
 
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+
+    #[Route('/categories-list-db', name: 'categories_list_db')]
+>>>>>>> 8588bb4 (user_insert_form)
     public function listCategoriesFromDb(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();
@@ -74,9 +96,14 @@ class ArticlesController extends AbstractController
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 =======
 
 }
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+}
+
+>>>>>>> 8588bb4 (user_insert_form)

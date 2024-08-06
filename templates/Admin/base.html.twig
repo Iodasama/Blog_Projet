@@ -17,6 +17,7 @@
 </head>
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <header class="headerAdmin">
     <h1 class="adminh1">Admin </h1>
     {% for message in app.flashes('success') %}
@@ -50,12 +51,37 @@
 
 
 
+=======
+<header class="headerAdmin">
+>>>>>>> 8588bb4 (user_insert_form)
     <h1 class="adminh1">Admin </h1>
+    {% for message in app.flashes('success') %}
+        <div class="success-message">
+            {{ message }}
+        </div>
+    {% endfor %}
 
+    {% for message in app.flashes('error') %}
+        <div class="error-message">
+            {{ message }}
+        </div>
+    {% endfor %}
 
+    <nav class="header-nav">
+        <ul>
+            <li><a href="{{ path('admin_articles_list_db') }}">Gérer les articles </a></li>
+            <li><a href="{{ path('admin_categories_list_db') }}">Gérer les catégories </a></li>
+            <li><a href="{{ path('app_logout') }}">Se déconnecter </a></li>
+
+        </ul>
+    </nav>
 </header>
+<<<<<<< HEAD
 
 >>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+{#<h1 class="adminh1">Admin </h1>#}
+>>>>>>> 8588bb4 (user_insert_form)
 
 {% block content%}
 {% endblock %}

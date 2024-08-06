@@ -4,10 +4,12 @@ declare(strict_types=1); // pour etre sur de l'affichage permet de reperer les e
 namespace App\Controller\Admin;
 
 
+use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -45,11 +47,52 @@ class AdminArticlesController extends AbstractController
         } catch (\Exception $exception) {
             return $this->renderView('Admin/page/errormessage.html.twig', ['errorMessage' => $exception->getMessage()]);
         }
-            return $this->redirectToRoute('admin_articles_list_db'); //bien mettre le name du path ici admin_articles_list_db non pas
+        return $this->redirectToRoute('admin_articles_list_db'); //bien mettre le name du path ici admin_articles_list_db non pas
+    }
+
+    #[Route('/Admin-insert-formbuilder', name: 'Admin_article_insert_formbuilder')]
+    public function insertArticles(EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $article = new Article();
+        $articleCreateForm = $this->createForm(ArticleType::class, $article);
+        $articleCreateFormView = $articleCreateForm->createView();
+
+        $articleCreateForm->handleRequest($request);
+        if ($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
+
+            $entityManager->persist($article);
+            $entityManager->flush();
+            $this->addFlash('success', 'Article inserted successfully');
         }
 
-}
 
+        return $this->render('Admin/page/insert-articles.html.twig', ['articleForm' => $articleCreateFormView]);
+
+    }
+
+
+    #[Route('/Admin-update-formbuilder/{id}', name: 'Admin_article_update_formbuilder')]
+    public function updateArticles(int $id, EntityManagerInterface $entityManager, Request $request, ArticleRepository $articleRepository): Response
+    {
+        $article = $articleRepository->find($id);
+
+        $articleCreateForm = $this->createForm(ArticleType::class, $article);
+        $articleCreateFormView = $articleCreateForm->createView();
+
+        $articleCreateForm->handleRequest($request);
+        if ($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
+
+            $entityManager->persist($article);
+            $entityManager->flush(); //execution de la requete sql
+            $this->addFlash('success', 'Article updated successfully');
+        }
+
+
+        return $this->render('Admin/page/update-articles.html.twig', ['articleForm' => $articleCreateFormView]);
+
+
+    }
+}
 //    #[Route('/admin/show-articles/{id}', name: 'admin_article_db_by_id')]
 //    public function adminShowArticleById(int $id, ArticleRepository $articleRepository): Response
 //    {
