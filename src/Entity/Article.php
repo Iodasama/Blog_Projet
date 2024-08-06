@@ -27,6 +27,7 @@ class Article
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: true, onDelete: "SET NULL")]
     private ?Category $category = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -37,6 +38,18 @@ class Article
 
     #[ORM\Column]
     private ?bool $isPublished = null;
+// Permet de supprimer en "cascade"
+    // les articles liés à une catégorie
+    // quand la catégorie est supprimée
+    //#[ORM\JoinColumn(onDelete: "CASCADE")]
+    // quand la catégorie est supprimée
+        // on supprime la valeur de category_id dans les articles
+        // liés à la catégorie
+    public function __construct() { // penser a bien le mettre sinon ca passe pas au niveau des dates
+
+        $this->createdAt=new \DateTime(datetime:'NOW');
+        $this->updatedAt=new \DateTime(datetime:'NOW');
+    }
 
     public function getId(): ?int
     {
@@ -127,12 +140,12 @@ class Article
         return $this;
     }
 
-    public function isPublished(): ?bool
+    public function getIsPublished(): ?bool // bien verifier si la syntaxe du getter
     {
         return $this->isPublished;
     }
 
-    public function setPublished(bool $isPublished): static
+    public function setIsPublished(bool $isPublished): static //bien verifier si la syntaxe du setter
     {
         $this->isPublished = $isPublished;
 

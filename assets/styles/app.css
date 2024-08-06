@@ -1,3 +1,9 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #96d9f4;
 }
@@ -7,6 +13,33 @@ body {
     display: flex;
 }
 
+
+.headerAdmin{
+    background-image: url("https://www.protechguy.com/wp-content/uploads/sites/712/2021/01/bigstock-Closed-Padlock-On-Digital-Back-383628656-scaled.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:60vh;
+
+}
+
+.headerGuest {
+
+    background-image: url('../../images/buildings-city-downtown-1008696_blog_pexel-650x433.jpg');
+    background-size: contain;
+    /*contain pour prendre plus de place*/
+    background-repeat: no-repeat;
+    /*height:100vh;*/
+    height:130vh;
+
+}
+/*.img_admin_header{*/
+/*    !*position:absolute;*!*/
+/*    width: 100%;*/
+/*}*/
+/*.header_admin {*/
+/*    width:75%;*/
+/*}*/
 
 .img_header {
     /*position:relative;*/
@@ -20,7 +53,6 @@ body {
 }
 
 .admin_image{
-
     width:50px;
 }
 
@@ -31,9 +63,65 @@ tr {
 
 .adminh1{
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+    border-radius: 8px;
+    align-items: center;
+    /*width:15%;*/
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 .success-message{
     font-size: xx-large;
     color:#52110D;
     text-shadow: #FC0 1px 0 10px;
+}
+
+img {
+   width:100%;
+}
+
+.poke2{
+    width:50%
+}
+
+
+
+.header-nav {
+    /*display: flex;*/
+    /*justify-content: space-evenly;*/
+    /*align-items: center;*/
+    /*text-decoration: white;*/
+}
+
+ul li a {
+    color:white;
+    text-decoration: white;
+
+}
+ul {
+    list-style: none;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+a:hover{ color:red}
+
+.success-message {
+    width: 100%;
+    color: white;
+    background-color: green;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.error-message {
+    width: 100%;
+    color: white;
+    background-color: red;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
 }

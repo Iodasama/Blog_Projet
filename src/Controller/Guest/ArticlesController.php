@@ -4,9 +4,13 @@ declare(strict_types=1); // pour etre sur de l'affichage permet de reperer les e
 namespace App\Controller\Guest;
 
 
+use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -14,7 +18,6 @@ class ArticlesController extends AbstractController
 {
 
     #[Route('/articles-list-db', name: 'articles_list_db')]
-
     public function listArticlesFromDb(ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAll();
@@ -27,15 +30,15 @@ class ArticlesController extends AbstractController
     {
         $article = $articleRepository->find($id);
 
-        if (!$article || !$article->isPublished()) {
+        if (!$article || !$article->getIsPublished()) {
             $html404 = $this->renderView('guest/page/404.html.twig');
             return new Response($html404, 404);
         }
 
         return $this->render('Guest/page/show-articleById.html.twig', ['article' => $article]);
     }
-    #[Route('/categories-list-db', name: 'categories_list_db')]
 
+    #[Route('/categories-list-db', name: 'categories_list_db')]
     public function listCategoriesFromDb(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();
@@ -51,5 +54,5 @@ class ArticlesController extends AbstractController
         return $this->render('Guest/page/show-categoriesById.html.twig', ['category' => $category]);
     }
 
-
 }
+

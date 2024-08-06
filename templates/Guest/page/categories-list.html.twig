@@ -7,7 +7,7 @@
         <h1 class="poke">Your favorite Category is here</h1>
         <section class="list-articles">
         {% for category in categories %}
-            <h1 class="poke2">{{ category.title }}</h1>
+            <h1 class="poke2" style="background-color: {{ category.color }}">{{ category.title }}</h1>
 {#            <h1 class="poke2">{{ article.content}}</h1>#}
 {#            <h1 class="poke2">{{ article.description }}</h1>#}
 {#            <a href="{{ path('category_db_by_id', {id:catgory.id}) }}">Go get Your Category </a>#}
