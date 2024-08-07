@@ -9,9 +9,12 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminArticlesController extends AbstractController
 {
@@ -51,7 +54,7 @@ class AdminArticlesController extends AbstractController
     }
 
     #[Route('/Admin-insert-formbuilder', name: 'Admin_article_insert_formbuilder')]
-    public function insertArticles(EntityManagerInterface $entityManager, Request $request): Response
+    public function insertArticles(EntityManagerInterface $entityManager, Request $request, SluggerInterface $slugger, ParameterBagInterface $params): Response
     {
         $article = new Article();
         $articleCreateForm = $this->createForm(ArticleType::class, $article);
@@ -59,9 +62,43 @@ class AdminArticlesController extends AbstractController
 
         $articleCreateForm->handleRequest($request);
         if ($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
+            // on  récupère le fichier depuis le formulaire // au prealable dans le dossier Form Fichier ArticleType.phpje demande à symfony de ne pas gérer automatiquement le champs image, je prends la main.
+            $imageFile = $articleCreateForm->get('image')->getData();
 
-            $entityManager->persist($article);
-            $entityManager->flush();
+
+            // si il y a bien un fichier envoyé
+            if ($imageFile) {
+                // je récupère le nom du fichier (ici mes images ont des noms de fichiers avec des lettres, tirets du 6,  et chiffres et extensions en .jpg)
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                // le slug je nettoie le nom en sortant tous les caractères spéciaux etc
+                // je type la classe SluggerInterface  et je crée une instance $slugger des lors je peux utliser ses methodes
+                //Je place en parametres SluggerInterface et $slugger
+                $safeFilename = $slugger->slug($originalFilename);
+
+                // je rajoute un identifiant unique au nom (que l'on pourra verifier en bdd une fois inseré apres le flush)
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    // je récupère le chemin de la racine du projet
+                    $rootPath = $params->get('kernel.project_dir');
+                    // je déplace le fichier dans le dossier /public/images en partant de la racine
+                    // du projet, et je renomme le fichier avec le nouveau nom (slugifié et identifiant unique)
+                    $imageFile->move( $rootPath.'/public/images', $newFilename);
+                } catch (FileException $e){
+                    dd($e->getMessage());
+
+                    //  Le code où le programmeur pense qu'une exception peut se produire est placé dans le trybloc. Cela ne signifie pas qu'une exception se produira ici. Cela signifie que cela pourrait se produire ici, et que le programmeur est conscient de cette possibilité. Le type d'erreur que l on attend est placé dans le catchbloc. Celui-ci contient également tout le code qui doit être exécuté si une exception se produit.
+                    //si l exception se produit on aura un message du tsyle : Some error message
+                }
+
+                // je stocke dans la propriété image de l'entité article le nom du fichier
+                $article->setImage($newFilename);
+
+            }
+
+            $entityManager->persist($article); // preparation de la requete
+            $entityManager->flush(); // execution
             $this->addFlash('success', 'Article inserted successfully');
         }
 
@@ -81,7 +118,7 @@ class AdminArticlesController extends AbstractController
 
         $articleCreateForm->handleRequest($request);
         if ($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
-
+            $article->setUpdatedAt(new \DateTime('NOW'));
             $entityManager->persist($article);
             $entityManager->flush(); //execution de la requete sql
             $this->addFlash('success', 'Article updated successfully');
