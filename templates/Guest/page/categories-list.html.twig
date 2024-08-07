@@ -7,8 +7,6 @@
         <h1 class="poke">Your favorite Category is here</h1>
         <section class="list-articles">
         {% for category in categories %}
-<<<<<<< HEAD
-<<<<<<< HEAD
             <h1 class="poke2" style="background-color: {{ category.color }}">{{ category.title }}</h1>
 {#            <div class="test"><img src="{{asset('images/buildings-city-downtown-1008696_blog_pexel-650x433.jpg ' )}}" alt=""> </div>#}
             
@@ -16,16 +14,6 @@
 {#            <h1 class="poke2">{{ article.description }}</h1>#}
 {#            <a href="{{ path('category_db_by_id', {id:catgory.id}) }}">Go get Your Category </a>#}
             <p class="poke2"><img src="{{ category.image }}"></p>
-=======
-            <h1 class="poke2">{{ category.title }}</h1>
-=======
-            <h1 class="poke2" style="background-color: {{ category.color }}">{{ category.title }}</h1>
->>>>>>> 8588bb4 (user_insert_form)
-{#            <h1 class="poke2">{{ article.content}}</h1>#}
-{#            <h1 class="poke2">{{ article.description }}</h1>#}
-{#            <a href="{{ path('category_db_by_id', {id:catgory.id}) }}">Go get Your Category </a>#}
-{#            <p class="poke2"><img src="{{ article.image }}"></p>#}
->>>>>>> 9dea6b5 (commit_Admin_Guest)
 
 {#            <h1 class="poke2">{{ category.createdAt |date("Y/m/d") }}</h1>#}
 
