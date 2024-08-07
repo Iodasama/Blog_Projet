@@ -1,532 +1,176 @@
-@font-face {
-    font-family: 'Pokemon Hollow';
-    src:url("../Font/pokemonFont/Pokemon Hollow.ttf") ;
-
-/* on peut mettre aussi  src:url("../Font/pokemonFont/Pokemon Hollow.ttf") format('truetype')*/
-
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: skyblue;
-    font-family: "Pokemon Hollow";
+  background-color: #96d9f4;
 }
-
-.Title {
-
-    color:#52110D;
-    text-align: center
-
-
-}
-
-#Pika{
-    color: #025B73;
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    width:30%;
-    font-size: 1rem;
-    text-align: center;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgb(220, 0, 0);
-    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
-    transform: rotate(25deg);
-    -webkit-transform: rotate(25deg);
-    -moz-transform: rotate(25deg);
-    -ms-transform: rotate(25deg);
-    margin-top: 10%;
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-}
-
-#Pika:hover {
-    color:  rgb(220, 0, 0);;
-    background-color: #025B73;
-    transform: rotate(40deg);
-}
-
-#Pika:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-}
-
-h2 {
-
-    width: 30%;
-    color: #025B73;
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgb(220, 0, 0);
-    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
-    transform: rotate(25deg);
-    -webkit-transform: rotate(25deg);
-    -moz-transform: rotate(25deg);
-    -ms-transform: rotate(25deg);
-    margin-top: 10%;
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-}
-
-h2:hover {
-    color:  rgb(220, 0, 0);;
-    background-color: #025B73;
-    transform: rotate(40deg);
-}
-
-h2:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+.list-articles {
+  margin: 30px;
+  display: flex;
 }
 
 
-h3 {
-    width: 30%;
-    color: #025B73;
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgb(220, 0, 0);
-    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
-    transform: rotate(25deg);
-    -webkit-transform: rotate(25deg);
-    -moz-transform: rotate(25deg);
-    -ms-transform: rotate(25deg);
-    margin-top: 10%;
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-}
-
-h3:hover {
-    color:  rgb(220, 0, 0);;
-    background-color: #025B73;
-    transform: rotate(40deg);
-}
-
-h3:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-}
-
-h1 {
-    color: #025B73;
-    text-align:center;
-}
-
-.fa-solid {
-    color: #025B73
+.headerAdmin{
+  background-image: url("https://www.protechguy.com/wp-content/uploads/sites/712/2021/01/bigstock-Closed-Padlock-On-Digital-Back-383628656-scaled.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height:60vh;
 
 }
 
-.reviews {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
+.headerGuest {
+
+  background-image: url('../../public/images/buildings-city-downtown-1008696_blog_pexel-650x433.jpg');
+  background-size: contain;
+  /*contain pour prendre plus de place*/
+  background-repeat: no-repeat;
+  /*height:100vh;*/
+  height:130vh;
+
+}
+/*.img_admin_header{*/
+/*    !*position:absolute;*!*/
+/*    width: 100%;*/
+/*}*/
+/*.header_admin {*/
+/*    width:75%;*/
+/*}*/
+.img_header {
+  /*position:relative;*/
+  width: 100%;
+}
+.admin-article-table {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-/*section { display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items:center;}*/
+.admin_image{
 
-label {
-    width: 20px;
+  width:50px;
 }
 
-p {
+td{ border:solid black}
+tr {
+  border:solid black;
+}
 
-    font-size: larger;
-    color: blueviolet;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.adminh1{
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: white;
+  border-radius: 8px;
+  align-items: center;
+  /*width:15%;*/
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.success-message{
+  font-size: xx-large;
+  color:#52110D;
+  text-shadow: #FC0 1px 0 10px;
 }
 
 img {
-    width: 100%;
-
+  width:50%;
 }
 
-div {
-    width: 25%;
-
-}
-
-header {color: rgb(255, 0, 4);
-
-    background: no-repeat;
-    background-size:cover;
-    background-image:url(https://i.etsystatic.com/42813710/r/il/0f9f8c/5604298935/il_fullxfull.5604298935_i5n0.jpg);
-
-}
-header img {
-    height: 10%;
-    width:20%;
-
-}
-header {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-
-
-}
-/* CSS pour Label & Input de Matt*/
-
-.inputWrapper{
-    display: flex;
-    width:100%;
-    justify-content: space-between;
-    margin:30px 0;
-}
-
-.inputWrapper label{
-    width:20%;
-    display: block;
-}
-
-.inputWrapper input {
-    width: 67%;
-    display: block;
-}
-
-/* CSS pour Label & Input de Matt*/
-
-.postImage{
-
-    width:60%;
-
-
-}
-
-footer img {
-
-    height: 10%;
-    width:20%;
-    object-fit: contain;
-}
-
-footer  {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-}
-
-#sidebar{
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 85px;
-    display: flex;
-    overflow-x: hidden;
-    flex-direction: column;
-    background: #29a2b5;
-    padding: 25px 20px;
-    color: aliceblue;
-    text-align:left;
-}
-
-/*.form-examples {display: flex;
- justify-content: center;
- flex-direction: column;
- align-items: center;
- color: rgb(226, 43, 43);
- background-color: #025B73 ;
- }*/
-
-.controller { display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    color: #036686;
-    background-color: #07242E ;
-}
-
-.controller ul li {
-
-    text-align: left;
-
-
-}
-a {
-    display: flex;
-    flex-direction: column;
-    color:#52110D;
-    text-shadow: #FC0 1px 0 10px;
-}
-
-a:hover{
-    transform: rotate(180deg);
-
-}
-
-.create-articles {
-    width:20%;
-    margin:0 auto
-
+.poke2{
+  width:50%
 }
 
 
-.products {
-    display: flex;
-    justify-content: center;
-    flex-direction:row;
-    flex-wrap: wrap;
-    text-align: center;
+
+.header-nav {
+  /*display: flex;*/
+  /*justify-content: space-evenly;*/
+  /*align-items: center;*/
+  /*text-decoration: white;*/
 }
 
-.products article h2 {
-    color:#b32692
-}
-
-article {
-
-    border:solid black ;
-    width: 50%;
+ul li a {
+  color:white;
+  text-decoration: white;
 
 }
-
-section.sectioncreatearticle {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+ul {
+  list-style: none;
+  display:flex;
+  justify-content: space-evenly;
 }
 
-.login {
-    display: flex;
-    flex-direction: column;
-    color:#52110D;
-    text-shadow: #FC0 1px 0 10px;
+a:hover{ color:red}
+
+.success-message {
+  width: 100%;
+  color: white;
+  background-color: green;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
 
-section {
-
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.error-message {
+  width: 100%;
+  color: white;
+  background-color: red;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
 
-#divaddArticle{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.footer-image{
+  background-size: contain;
+  /*contain pour prendre plus de place*/
+  background-repeat: no-repeat;
+  /*height:100vh;*/
+  width:100%;
+  height: 100vh;
+}
+footer {
 
+  background-image: url('../../public/images/buildings-city-downtown-1008696_blog_pexel-650x433.jpg');
+  background-size: contain;
+  /*contain pour prendre plus de place*/
+  background-repeat: no-repeat;
+  /*height:100vh;*/
+  height:121.405vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
 }
 
-#addArticle{
-    box-sizing: border-box;
-    width: 16%;
-    border: solid #5B6DCD 10px;
-    padding: 5px;
-
-    color: #025B73;
-    border: 0;
-    margin-bottom: 50px;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgb(220, 0, 0);
-    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
-    transform: rotate(20deg);
-    -webkit-transform: rotate(20deg);
-    -moz-transform: rotate(20deg);
-    -ms-transform: rotate(20deg);
-    margin-top: 10%;
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-
+.admin-article-popup-delete {
+  display: none;
+  position: absolute;
+  background-color: #69F5FC;
+  top: 700px;
+  right: 400px;
+  padding: 100px;
+  border-radius: 25px;
 }
 
-#addArticle:hover {
-    color:  rgb(220, 0, 0);;
-    background-color: #025B73;
-    transform: rotate(40deg);
-}
+.noDelete {
+  /*background-color: #C41F3D;*/
+  /*display:none;*/
+  /*position: absolute;*/
+  /*width:100%;*/
 
-#addArticle:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-}
-
-#Article{
-
-    box-sizing: border-box;
-    width: 16%;
-    border: solid #5B6DCD 10px;
-    padding: 5px;
-
-    color:rgb(220, 0, 0) ;
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: #025B73;
-    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
-    margin-top: 10%;
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-
+  display: none;
+  position: absolute;
+  background-color:#C41F3D;
+  top: 500px;
+  right: 500px;
+  padding: 50px;
+  border-radius: 25px;
 
 }
+/*}*/
 
-#Article:hover {
-
-    transform: rotate(25deg);
-    -webkit-transform: rotate(25deg);
-    -moz-transform: rotate(25deg);
-    -ms-transform: rotate(25deg);
-}
-
-#Article:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-}
-
-#sidebar{
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 85px;
-    display: flex;
-    overflow-x: hidden;
-    flex-direction: column;
-    background:#036586;
-    padding: 25px 20px;
-    color: aliceblue;
-    text-align:left;
-}
-
-
-/*.pricesMaxMin {
-
-    display: flex;
-    justify-content: center;
-}*/
-
-
-/*
-form.category  {
-display: flex;
-flex-direction: column;
-
-}
-
-label input {
-width:30%;
-}*/
-
-
-.poke {
-    animation-duration: 5s;
-    animation-name: slidein;
-}
-
-@keyframes slidein {
-    from {
-        translate: 150vw 0;
-        scale: 200% 1;
-    }
-
-    to {
-        translate: 0 0;
-        scale: 100% 1;
-    }
-}
-
-.poke2 {
-    width:30%;
-    animation-duration: 5s;
-    animation-name: slidein;
-    color:#52110D;
-    text-shadow: #FC0 1px 0 10px;
-}
-
-@keyframes slidein {
-    from {
-        translate: 150vw 0;
-        scale: 200% 1;
-    }
-
-    to {
-        translate: 0 0;
-        scale: 100% 1;
-    }
-}
-
-body {
-    background: black;
-    animation: color-me-in 5s; /* other keywords like "infinite alternate" can be useful here */
-}
-
-@keyframes color-me-in {
-    /* You could think of as "step 1" */
-    0% {
-        background: skyblue;
-    }
-    /* You could think of as "step 2" */
-    100% {
-        background:orange;
-    }
-}
-
-main {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-label {
-
-    font-size: xx-large;
-    color:#52110D;
-    text-shadow: #FC0 1px 0 10px;
-    font-family:"Pokemon Hollow";
-}
-
-input {
-    font-size: x-large;
-    color:#52110D;
-    text-shadow: #FC0 1px 0 10px;
-    font-family:"Pokemon Hollow";
-}
-
-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.insertPoke {
-    width: 50%;
-}
-.insertPoke label {
-
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.pi {
-
-width:300px;
-}
-
-.submit{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
+/*# sourceMappingURL=app.css.map */
