@@ -19,7 +19,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class AdminArticlesController extends AbstractController
 {
 
-    #[Route('/Admin/articles-list-db', name: 'admin_articles_list_db')]
+    #[Route('/admin/articles-list-db', name: 'admin_articles_list_db')]
     //Je cree la route, je lui passe le nom de admin_articles_list_db
     public function adminListArticlesFromDb(ArticleRepository $articleRepository): Response //Response pour le typage
     {
@@ -33,7 +33,7 @@ class AdminArticlesController extends AbstractController
         //la variable articles contient la variable $articles
     }
 
-    #[Route('/Admin/delete/{id}', name: 'delete_article')]
+    #[Route('/admin/delete/{id}', name: 'delete_article')]
     public function deleteArticle(int $id, articleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
         $article = $articleRepository->find($id);
@@ -53,7 +53,7 @@ class AdminArticlesController extends AbstractController
         return $this->redirectToRoute('admin_articles_list_db'); //bien mettre le name du path ici admin_articles_list_db non pas
     }
 
-    #[Route('/Admin-insert-formbuilder', name: 'Admin_article_insert_formbuilder')]
+    #[Route('/admin/insert-formbuilder', name: 'admin_article_insert_formbuilder')]
     public function insertArticles(EntityManagerInterface $entityManager, Request $request, SluggerInterface $slugger, ParameterBagInterface $params): Response
     {
         $article = new Article();
@@ -108,7 +108,7 @@ class AdminArticlesController extends AbstractController
     }
 
 
-    #[Route('/Admin-update-formbuilder/{id}', name: 'Admin_article_update_formbuilder')]
+    #[Route('/admin/update-formbuilder/{id}', name: 'admin_article_update_formbuilder')]
     public function updateArticles(int $id, EntityManagerInterface $entityManager, Request $request, ArticleRepository $articleRepository): Response
     {
         $article = $articleRepository->find($id);
