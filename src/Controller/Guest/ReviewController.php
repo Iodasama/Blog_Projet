@@ -22,6 +22,8 @@ class ReviewController extends AbstractController
         $books = $bookRepository->findAll();
 
         if ($request->getMethod() === "POST") {
+
+            $book = $bookRepository->find($request->request->get('book_id'));
             $title = $request->request->get('title');
             $content = $request->request->get('content'); // avec la methode Post la demande de création du user a été envoyée, je recupere les donnees POST
 

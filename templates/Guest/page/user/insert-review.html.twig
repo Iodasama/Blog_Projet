@@ -12,19 +12,19 @@
         </div>
         <div class="form-example">
             <label for="book-select">Choose a Book:</label>
-            {% for book in books %}
-            <select name="books" id="book-select">
+
+            <select name="book_id" id="book-select">
                 <option value="">--Please choose an option--</option>
-                <option value="">{{book.title}}</option>
+                {% for book in books %}
+                <option value="{{book.id}}">{{book.title}}</option>
+                {% endfor %}
             </select>
-            {% endfor %}
+
 
         </div>
         <div class="form-example">
             <label for="content">Enter your comment: {#            penser a mettre un label avec un textarea#}
-                <textarea id="content" name="content" rows="4" cols="50" placeholder=" ">
-            Write your message here
-            </textarea>
+                <textarea id="content" name="content" rows="4" cols="50" placeholder="Write your message here"></textarea>
             </label>
 
         </div>

@@ -78,33 +78,34 @@ class __TwigTemplate_006c900b90cc16e4975ed4e1d54eb33d extends Template
         </div>
         <div class=\"form-example\">
             <label for=\"book-select\">Choose a Book:</label>
-            ";
-        // line 15
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["books"]) || array_key_exists("books", $context) ? $context["books"] : (function () { throw new RuntimeError('Variable "books" does not exist.', 15, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["book"]) {
-            // line 16
-            yield "            <select name=\"books\" id=\"book-select\">
+
+            <select name=\"book_id\" id=\"book-select\">
                 <option value=\"\">--Please choose an option--</option>
-                <option value=\"\">";
-            // line 18
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["book"], "title", [], "any", false, false, false, 18), "html", null, true);
+                ";
+        // line 18
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["books"]) || array_key_exists("books", $context) ? $context["books"] : (function () { throw new RuntimeError('Variable "books" does not exist.', 18, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["book"]) {
+            // line 19
+            yield "                <option value=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["book"], "id", [], "any", false, false, false, 19), "html", null, true);
+            yield "\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["book"], "title", [], "any", false, false, false, 19), "html", null, true);
             yield "</option>
-            </select>
-            ";
+                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['book'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 21
-        yield "
+        yield "            </select>
+
+
         </div>
         <div class=\"form-example\">
             <label for=\"content\">Enter your comment: ";
-        // line 25
-        yield "                <textarea id=\"content\" name=\"content\" rows=\"4\" cols=\"50\" placeholder=\" \">
-            Write your message here
-            </textarea>
+        // line 27
+        yield "                <textarea id=\"content\" name=\"content\" rows=\"4\" cols=\"50\" placeholder=\"Write your message here\"></textarea>
             </label>
 
         </div>
@@ -151,7 +152,7 @@ class __TwigTemplate_006c900b90cc16e4975ed4e1d54eb33d extends Template
      */
     public function getDebugInfo()
     {
-        return array (  113 => 35,  105 => 25,  100 => 21,  91 => 18,  87 => 16,  83 => 15,  69 => 3,  59 => 2,  36 => 1,);
+        return array (  114 => 35,  108 => 27,  101 => 21,  90 => 19,  86 => 18,  69 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -170,19 +171,19 @@ class __TwigTemplate_006c900b90cc16e4975ed4e1d54eb33d extends Template
         </div>
         <div class=\"form-example\">
             <label for=\"book-select\">Choose a Book:</label>
-            {% for book in books %}
-            <select name=\"books\" id=\"book-select\">
+
+            <select name=\"book_id\" id=\"book-select\">
                 <option value=\"\">--Please choose an option--</option>
-                <option value=\"\">{{book.title}}</option>
+                {% for book in books %}
+                <option value=\"{{book.id}}\">{{book.title}}</option>
+                {% endfor %}
             </select>
-            {% endfor %}
+
 
         </div>
         <div class=\"form-example\">
             <label for=\"content\">Enter your comment: {#            penser a mettre un label avec un textarea#}
-                <textarea id=\"content\" name=\"content\" rows=\"4\" cols=\"50\" placeholder=\" \">
-            Write your message here
-            </textarea>
+                <textarea id=\"content\" name=\"content\" rows=\"4\" cols=\"50\" placeholder=\"Write your message here\"></textarea>
             </label>
 
         </div>
