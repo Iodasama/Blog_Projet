@@ -27,7 +27,14 @@ class Article
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+<<<<<<< HEAD
+<<<<<<< HEAD
     #[ORM\JoinColumn(nullable: true, onDelete: "SET NULL")]
+=======
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+    #[ORM\JoinColumn(nullable: true, onDelete: "SET NULL")]
+>>>>>>> 8588bb4 (user_insert_form)
     private ?Category $category = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -38,7 +45,20 @@ class Article
 
     #[ORM\Column]
     private ?bool $isPublished = null;
+// Permet de supprimer en "cascade"
+    // les articles liés à une catégorie
+    // quand la catégorie est supprimée
+    //#[ORM\JoinColumn(onDelete: "CASCADE")]
+    // quand la catégorie est supprimée
+        // on supprime la valeur de category_id dans les articles
+        // liés à la catégorie
+    public function __construct() { // penser a bien le mettre sinon ca passe pas au niveau des dates
 
+        $this->createdAt=new \DateTime(datetime:'NOW');
+        $this->updatedAt=new \DateTime(datetime:'NOW');
+    }
+
+<<<<<<< HEAD
     // Permet de supprimer en "cascade"
     // les articles liés à une catégorie
     // quand la catégorie est supprimée
@@ -53,6 +73,8 @@ class Article
         $this->updatedAt=new \DateTime(datetime:'NOW');
     }
 
+=======
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
     public function getId(): ?int
     {
         return $this->id;
@@ -142,12 +164,28 @@ class Article
         return $this;
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
     public function getIsPublished(): ?bool // bien verifier si la syntaxe du getter
+=======
+    public function isPublished(): ?bool
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+    public function getIsPublished(): ?bool // bien verifier si la syntaxe du getter
+>>>>>>> 8588bb4 (user_insert_form)
     {
         return $this->isPublished;
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
     public function setIsPublished(bool $isPublished): static //bien verifier si la syntaxe du setter
+=======
+    public function setPublished(bool $isPublished): static
+>>>>>>> 9dea6b5 (commit_Admin_Guest)
+=======
+    public function setIsPublished(bool $isPublished): static //bien verifier si la syntaxe du setter
+>>>>>>> 8588bb4 (user_insert_form)
     {
         $this->isPublished = $isPublished;
 

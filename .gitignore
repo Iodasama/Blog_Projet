@@ -18,6 +18,7 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
+
 /Blog_Projet
 /var/log
 
@@ -27,3 +28,4 @@
 ###> symfony/asset-mapper ###
 /assets/vendor/
 ###< symfony/asset-mapper ###
+

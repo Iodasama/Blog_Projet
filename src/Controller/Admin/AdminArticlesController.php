@@ -19,7 +19,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class AdminArticlesController extends AbstractController
 {
 
-    #[Route('/admin/articles-list-db', name: 'admin_articles_list_db')]
+    #[Route('/Admin/articles-list-db', name: 'admin_articles_list_db')]
     //Je cree la route, je lui passe le nom de admin_articles_list_db
     public function adminListArticlesFromDb(ArticleRepository $articleRepository): Response //Response pour le typage
     {
@@ -33,7 +33,7 @@ class AdminArticlesController extends AbstractController
         //la variable articles contient la variable $articles
     }
 
-    #[Route('/admin/delete/{id}', name: 'delete_article')]
+    #[Route('/Admin/delete/{id}', name: 'delete_article')]
     public function deleteArticle(int $id, articleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
         $article = $articleRepository->find($id);
@@ -53,7 +53,7 @@ class AdminArticlesController extends AbstractController
         return $this->redirectToRoute('admin_articles_list_db'); //bien mettre le name du path ici admin_articles_list_db non pas
     }
 
-    #[Route('/admin/insert-formbuilder', name: 'admin_article_insert_formbuilder')]
+    #[Route('/Admin-insert-formbuilder', name: 'Admin_article_insert_formbuilder')]
     public function insertArticles(EntityManagerInterface $entityManager, Request $request, SluggerInterface $slugger, ParameterBagInterface $params): Response
     {
         $article = new Article();
@@ -89,7 +89,7 @@ class AdminArticlesController extends AbstractController
                     dd($e->getMessage());
 
                     //  Le code où le programmeur pense qu'une exception peut se produire est placé dans le trybloc. Cela ne signifie pas qu'une exception se produira ici. Cela signifie que cela pourrait se produire ici, et que le programmeur est conscient de cette possibilité. Le type d'erreur que l on attend est placé dans le catchbloc. Celui-ci contient également tout le code qui doit être exécuté si une exception se produit.
-                    //si l exception se produit on aura un message du style : Some error message
+                    //si l exception se produit on aura un message du tsyle : Some error message
                 }
 
                 // je stocke dans la propriété image de l'entité article le nom du fichier
@@ -108,7 +108,7 @@ class AdminArticlesController extends AbstractController
     }
 
 
-    #[Route('/admin/update-formbuilder/{id}', name: 'admin_article_update_formbuilder')]
+    #[Route('/Admin-update-formbuilder/{id}', name: 'Admin_article_update_formbuilder')]
     public function updateArticles(int $id, EntityManagerInterface $entityManager, Request $request, ArticleRepository $articleRepository): Response
     {
         $article = $articleRepository->find($id);
@@ -118,7 +118,7 @@ class AdminArticlesController extends AbstractController
 
         $articleCreateForm->handleRequest($request);
         if ($articleCreateForm->isSubmitted() && $articleCreateForm->isValid()) {
-            $article->setUpdatedAt(new \DateTime('NOW')); // pour avoir la date de l'update lors d'un updatej
+            $article->setUpdatedAt(new \DateTime('NOW'));
             $entityManager->persist($article);
             $entityManager->flush(); //execution de la requete sql
             $this->addFlash('success', 'Article updated successfully');
