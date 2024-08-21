@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class ReviewController extends AbstractController
+class ReviewController extends AbstractController //commentaire test commit
 {
     #[Route('/users/insert-review/{id}', 'users_insert_review')] // je cree ma route
     public function insertReview(int $id, Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository, BookRepository $bookRepository): Response
@@ -22,6 +22,8 @@ class ReviewController extends AbstractController
         $books = $bookRepository->findAll();
 
         if ($request->getMethod() === "POST") {
+
+            $book = $bookRepository->find($request->request->get('book_id'));
             $title = $request->request->get('title');
             $content = $request->request->get('content'); // avec la methode Post la demande de création du user a été envoyée, je recupere les donnees POST
 

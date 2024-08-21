@@ -89,7 +89,7 @@ class AdminArticlesController extends AbstractController
                     dd($e->getMessage());
 
                     //  Le code où le programmeur pense qu'une exception peut se produire est placé dans le trybloc. Cela ne signifie pas qu'une exception se produira ici. Cela signifie que cela pourrait se produire ici, et que le programmeur est conscient de cette possibilité. Le type d'erreur que l on attend est placé dans le catchbloc. Celui-ci contient également tout le code qui doit être exécuté si une exception se produit.
-                    //si l exception se produit on aura un message du tsyle : Some error message
+                    //si l exception se produit on aura un message du style : Some error message
                 }
 
                 // je stocke dans la propriété image de l'entité article le nom du fichier

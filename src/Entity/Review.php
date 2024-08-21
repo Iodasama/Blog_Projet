@@ -28,7 +28,7 @@ class Review
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'reviews')] // il faut que cela soit nullable sinon le book_id ne pouvant etre NULL il est impossible de creer le review
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Book $book = null;
 
     public function __construct() { // penser a bien le mettre sinon ca passe pas au niveau des dates quand on veut creer le review
