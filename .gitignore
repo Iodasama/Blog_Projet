@@ -16,8 +16,14 @@
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
+###< symfony/phpunit-bridge ###
+
 /Blog_Projet
 /var/log
 
 ### testcommitgit
 ###< symfony/phpunit-bridge ###
+
+###> symfony/asset-mapper ###
+/assets/vendor/
+###< symfony/asset-mapper ###
