@@ -17,5 +17,7 @@
 .phpunit.result.cache
 /phpunit.xml
 /Blog_Projet
+/var/log
+
 ### testcommitgit
 ###< symfony/phpunit-bridge ###
